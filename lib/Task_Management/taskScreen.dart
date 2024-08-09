@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:karma/horizontal_card_list.dart';
-import 'task_overlay.dart';
-import 'verticle_card_list_2.dart';
-import 'bottom_navigation_with_pointer.dart';
+import 'package:karma/Task_Management/horizontal_card_list.dart';
+import 'package:karma/Task_Management/task_overlay.dart';
+import 'package:karma/Task_Management/vertical_card_list.dart';
+import 'package:karma/Task_Management/bottom_navigation_with_pointer.dart';
+import 'package:karma/Task_Management/goals_screen.dart';
+import 'package:karma/Task_Management/goal_overlay.dart';
+
+import 'package:karma/Task_Management/models.dart'; // Import your Task model
 
 class TaskScreen extends StatefulWidget {
   @override
@@ -11,14 +15,15 @@ class TaskScreen extends StatefulWidget {
 
 class _TaskScreenState extends State<TaskScreen> {
   int _selectedCardIndex = 0;
-  int _selectedIndex = 1;
+  int _selectedIndex = 0;
+  List<Task> _tasks = []; // List to store tasks
 
   final List<String> _cardTitles = [
     'All',
     'Some',
     'Many',
     'A lot',
-    'much much more',
+    'Much much more',
   ];
 
   final List<GlobalKey> _navBarItemKeys = List.generate(4, (index) => GlobalKey());
@@ -47,13 +52,29 @@ class _TaskScreenState extends State<TaskScreen> {
     }
   }
 
-  void _showTaskOverlay() {
-    showModalBottomSheet(
-      context: context,
-      isScrollControlled: true,
-      backgroundColor: Colors.transparent,
-      builder: (context) => TaskOverlay(),
-    );
+  void _showOverlay() {
+    if (_selectedIndex == 2) {
+      // Show goal overlay when on Goals screen
+      showModalBottomSheet(
+        context: context,
+        isScrollControlled: true,
+        backgroundColor: Colors.transparent,
+        builder: (context) => GoalOverlay(),
+      );
+    } else {
+      // Show task overlay when on other screens
+      showModalBottomSheet(
+        context: context,
+        isScrollControlled: true,
+        backgroundColor: Colors.transparent,
+        builder: (context) => TaskOverlay(onTaskCreated: (Task ) {  },),
+      ).then((_) {
+        // Handle task addition (update UI or state if needed)
+        setState(() {
+          // Example: refresh the task list
+        });
+      });
+    }
   }
 
   @override
@@ -65,7 +86,9 @@ class _TaskScreenState extends State<TaskScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
-        child: Padding(
+        child: _selectedIndex == 2
+            ? GoalsScreen()  // Show the Goals screen if the 'Goals' button is selected
+            : Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -95,7 +118,7 @@ class _TaskScreenState extends State<TaskScreen> {
                   color: Colors.white,
                   child: VerticalCardList(
                     selectedCardIndex: _selectedCardIndex,
-                    onEditPressed: _showTaskOverlay, // Pass the overlay function
+                    onEditPressed: _showOverlay,
                   ),
                 ),
               ),
@@ -111,7 +134,7 @@ class _TaskScreenState extends State<TaskScreen> {
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: Color(0xFF1D5EBE),
-        onPressed: _showTaskOverlay,
+        onPressed: _showOverlay,
         child: Icon(
           Icons.add,
           color: Colors.white,

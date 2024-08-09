@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
+import 'models.dart'; // Import the file where the models are defined
 
 class TaskOverlay extends StatefulWidget {
+  final void Function(Task) onTaskCreated; // Callback to handle task creation
+
+  TaskOverlay({required this.onTaskCreated});
+
   @override
   _TaskOverlayState createState() => _TaskOverlayState();
 }
@@ -174,9 +179,7 @@ class _TaskOverlayState extends State<TaskOverlay> {
                                         color: Colors.white, // Color filter for the image
                                       ),
                                     ),
-
                                     SizedBox(width: 4.0), // Add some space between the icon and the text
-
                                     // Text
                                     Text(
                                       _selectedGoal!,
@@ -234,7 +237,15 @@ class _TaskOverlayState extends State<TaskOverlay> {
                           child: IconButton(
                             icon: Image.asset('assets/icons/Plain.png', color: Colors.white),
                             onPressed: () {
-                              // Handle submit task
+                              final task = Task(
+                                description_t: _taskController.text,
+                                goal: _selectedGoal ?? '',
+                                due_on: 'TBD', // Example value; update with actual data
+                                priority: 1, // Example value; update with actual data
+                                location: 'TBD', // Example value; update with actual data
+                              );
+                              widget.onTaskCreated(task); // Pass the task data to the callback
+                              Navigator.of(context).pop(); // Close the overlay
                             },
                           ),
                         ),
