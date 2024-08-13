@@ -23,9 +23,19 @@ if (flutterVersionName == null) {
 }
 
 android {
+    compileSdkVersion 34 // Only need to declare this once
+
     namespace "com.example.karma"
-    compileSdkVersion flutter.compileSdkVersion
-    ndkVersion flutter.ndkVersion
+
+    defaultConfig {
+        applicationId "com.example.karma"
+        minSdkVersion 21
+        targetSdkVersion 34
+        versionCode 1
+        versionName "1.0"
+
+        multiDexEnabled true // Enable MultiDex support
+    }
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8

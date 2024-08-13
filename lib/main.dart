@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:karma/Signup_Login/Signup_page.dart';
 import 'package:karma/Task_Management/taskScreen.dart';
 
 void main() {
@@ -11,7 +12,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: TaskScreen(),
+      // home: TaskScreen(), //test task screen
+      home: SignInPage(),  //test signup screen
     );
   }
 }
