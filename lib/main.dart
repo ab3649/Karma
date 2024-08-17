@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:karma/Onboarding/signup_page.dart';
 import 'package:karma/Signup_Login/login_page.dart';
 import 'package:karma/Task_Management/taskScreen.dart';
 
@@ -13,7 +14,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       // home: TaskScreen(), //test task screen
-      home: LogInPage(),  //test signup screen
+      home: SignUpPage(),  //test signup screen
+      // home: LogInPage(),  //test login screen
+
     );
   }
 }
