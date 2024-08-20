@@ -85,14 +85,15 @@ class _LogInPageState extends State<LogInPage> {
         title: Text('karma'),
         actions: [
           IconButton(
-            icon: Icon(Icons.settings),
+            icon: Image.asset('assets/icons/Vector.png', color: Colors.black),
             onPressed: () {
               // Implement your settings navigation here
             },
           ),
         ],
-        backgroundColor: Colors.white,
-        foregroundColor: Colors.black,
+        // backgroundColor: Colors.white,
+        backgroundColor: Color(0xFFFFFFFF),
+        // foregroundColor: Colors.black,
         elevation: 0, // Remove shadow for a flat look
       ),
       body: Container(
@@ -101,164 +102,167 @@ class _LogInPageState extends State<LogInPage> {
           crossAxisAlignment: CrossAxisAlignment.start, // Align children to the start (left) of the column
           children: [
             Expanded(
-              child: SingleChildScrollView( // Wrap with SingleChildScrollView
-                child: Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start, // Align children to the start (left) of the column
-                    children: [
-                      SizedBox(height: 100), // Add a SizedBox before the "Welcome to karma!" text
-                      Align(
-                        alignment: Alignment.centerLeft,
-                        child: RichText(
-                          text: TextSpan(
-                            children: [
-                              TextSpan(
-                                text: 'Welcome to ',
-                                style: TextStyle(
-                                  fontSize: 24,
-                                  fontFamily: 'GlacialIndifference',
-                                  color: Colors.black,
+              child: Center(
+                child: SingleChildScrollView( // Wrap with SingleChildScrollView
+                  child: Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start, // Align children to the start (left) of the column
+                      children: [
+                        // SizedBox(height: 100), // Add a SizedBox before the "Welcome to karma!" text
+                        Align(
+                          alignment: Alignment.centerLeft,
+                          child: RichText(
+                            text: TextSpan(
+                              children: [
+                                TextSpan(
+                                  text: 'Welcome to ',
+                                  style: TextStyle(
+                                    fontSize: 30,
+                                    fontFamily: 'GlacialIndifference',
+                                    color: Colors.black,
+                                  ),
                                 ),
-                              ),
-                              TextSpan(
-                                text: 'karma!',
-                                style: TextStyle(
-                                  fontSize: 24,
-                                  fontFamily: 'GlacialIndifference-bold',
-                                  color: Colors.black,
+                                TextSpan(
+                                  text: 'karma!',
+                                  style: TextStyle(
+                                    fontSize: 30,
+                                    fontFamily: 'GlacialIndifference-bold',
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.bold, // Bold weight for "name?"
+                                  ),
                                 ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                      // SizedBox(height: 4),
-                      Text(
-                        'A productivity tool to manage your goals. Sign in to begin your journey!',
-                        style: TextStyle(color: Colors.grey, fontSize: 16, fontFamily: 'GlacialIndifference'),
-                      ),
-                      SizedBox(height: 14),
-                      TextField(
-                        controller: _emailController,
-                        decoration: InputDecoration(
-                          labelText: 'Enter your E-Mail Address',
-                          labelStyle: TextStyle(fontFamily: 'GlacialIndifference', color: Colors.black),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(8.0), // Rounded corners
-                            borderSide: BorderSide(color: Colors.grey), // Grey outline
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(8.0),
-                            borderSide: BorderSide(color: Colors.grey), // Grey outline when focused
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(8.0),
-                            borderSide: BorderSide(color: Colors.grey), // Grey outline when enabled
-                          ),
-                          disabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(8.0),
-                            borderSide: BorderSide(color: Colors.grey), // Grey outline when disabled
-                          ),
-                          contentPadding: EdgeInsets.symmetric(vertical: 12.0, horizontal: 12.0), // Control height with vertical padding
-                        ),
-                      ),
-                      SizedBox(height: 16),
-                      TextField(
-                        controller: _passwordController,
-                        decoration: InputDecoration(
-                          labelText: 'Enter your Password',
-                          labelStyle: TextStyle(fontFamily: 'GlacialIndifference', color: Colors.black),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(8.0), // Rounded corners
-                            borderSide: BorderSide(color: Colors.grey), // Grey outline
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(8.0),
-                            borderSide: BorderSide(color: Colors.grey), // Grey outline when focused
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(8.0),
-                            borderSide: BorderSide(color: Colors.grey), // Grey outline when enabled
-                          ),
-                          disabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(8.0),
-                            borderSide: BorderSide(color: Colors.grey), // Grey outline when disabled
-                          ),
-                          contentPadding: EdgeInsets.symmetric(vertical: 12.0, horizontal: 12.0), // Control height with vertical padding
-                        ),
-                        obscureText: true,
-                      ),
-                      // SizedBox(height: 2),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Row(
-                            children: [
-                              Checkbox(value: false, onChanged: (_) {}),
-                              Text('Remember me', style: TextStyle(color: Colors.grey, fontFamily: 'GlacialIndifference')),
-                            ],
-                          ),
-                          TextButton(
-                            onPressed: _forgotPassword,
-                            child: Text('Forgot Password?', style: TextStyle(color: Colors.grey, fontFamily: 'GlacialIndifference')),
-                          ),
-                        ],
-                      ),
-                      SizedBox(height: 4),
-                      OutlinedButton(
-                        onPressed: _signInWithEmailAndPassword,
-                        child: Text('Sign In', style: TextStyle(color: Colors.white, fontFamily: 'GlacialIndifference-bold')), // Sign-in text color
-                        style: OutlinedButton.styleFrom(
-                          backgroundColor: Color(0xFF1D5EBE), // Button background color
-                          minimumSize: Size(double.infinity, 48),
-                          side: BorderSide(color: Colors.grey, width: 1), // Grey border color and width
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8.0), // Rounded corners
-                          ),
-                          elevation: 0, // Remove elevation
-                        ),
-                      ),
-                      SizedBox(height: 16),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Expanded(
-                            child: Divider(
-                              color: Colors.grey, // Change divider color to grey
-                              thickness: 1, // Adjust the thickness as needed
+                              ],
                             ),
                           ),
-                          SizedBox(width: 16),
-                          Text(
-                            'or',
-                            style: TextStyle(fontSize: 16), // Adjust the text style as needed
-                          ),
-                          SizedBox(width: 16),
-                          Expanded(
-                            child: Divider(
-                              color: Colors.grey, // Change divider color to grey
-                              thickness: 1, // Adjust the thickness as needed
-                            ),
-                          ),
-                        ],
-                      ),
-                      SizedBox(height: 16),
-                      OutlinedButton.icon(
-                        onPressed: _signInWithGoogle,
-                        icon: Image.asset('assets/icons/google.png', height: 30),
-                        label: Text('Sign in using Google', style: TextStyle(color: Colors.black, fontFamily: 'GlacialIndifference-bold')),
-                        style: OutlinedButton.styleFrom(
-                          minimumSize: Size(double.infinity, 48),
-                          side: BorderSide(color: Colors.grey, width: 1), // Grey border color and width
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8.0), // Rounded corners
-                          ),
-                          elevation: 0, // Remove elevation
                         ),
-                      ),
-                      SizedBox(height: 32),
-                    ],
+                        // SizedBox(height: 4),
+                        Text(
+                          'A productivity tool to manage your goals. Sign in to begin your journey!',
+                          style: TextStyle(color: Color(0xFF666666), fontSize: 16, fontFamily: 'GlacialIndifference'),
+                        ),
+                        SizedBox(height: 14),
+                        TextField(
+                          controller: _emailController,
+                          decoration: InputDecoration(
+                            labelText: 'Enter your E-Mail Address',
+                            labelStyle: TextStyle(fontFamily: 'GlacialIndifference', color: Colors.black),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(8.0), // Rounded corners
+                              borderSide: BorderSide(color: Colors.grey), // Grey outline
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(8.0),
+                              borderSide: BorderSide(color: Colors.grey), // Grey outline when focused
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(8.0),
+                              borderSide: BorderSide(color: Colors.grey), // Grey outline when enabled
+                            ),
+                            disabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(8.0),
+                              borderSide: BorderSide(color: Colors.grey), // Grey outline when disabled
+                            ),
+                            contentPadding: EdgeInsets.symmetric(vertical: 12.0, horizontal: 12.0), // Control height with vertical padding
+                          ),
+                        ),
+                        SizedBox(height: 16),
+                        TextField(
+                          controller: _passwordController,
+                          decoration: InputDecoration(
+                            labelText: 'Enter your Password',
+                            labelStyle: TextStyle(fontFamily: 'GlacialIndifference', color: Colors.black),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(8.0), // Rounded corners
+                              borderSide: BorderSide(color: Colors.grey), // Grey outline
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(8.0),
+                              borderSide: BorderSide(color: Colors.grey), // Grey outline when focused
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(8.0),
+                              borderSide: BorderSide(color: Colors.grey), // Grey outline when enabled
+                            ),
+                            disabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(8.0),
+                              borderSide: BorderSide(color: Colors.grey), // Grey outline when disabled
+                            ),
+                            contentPadding: EdgeInsets.symmetric(vertical: 12.0, horizontal: 12.0), // Control height with vertical padding
+                          ),
+                          obscureText: true,
+                        ),
+                        // SizedBox(height: 2),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Row(
+                              children: [
+                                Checkbox(value: false, onChanged: (_) {}),
+                                Text('Remember me', style: TextStyle(color: Colors.grey, fontFamily: 'GlacialIndifference')),
+                              ],
+                            ),
+                            TextButton(
+                              onPressed: _forgotPassword,
+                              child: Text('Forgot Password?', style: TextStyle(color: Colors.grey, fontFamily: 'GlacialIndifference')),
+                            ),
+                          ],
+                        ),
+                        SizedBox(height: 4),
+                        OutlinedButton(
+                          onPressed: _signInWithEmailAndPassword,
+                          child: Text('Sign In', style: TextStyle(color: Colors.white, fontFamily: 'GlacialIndifference-bold')), // Sign-in text color
+                          style: OutlinedButton.styleFrom(
+                            backgroundColor: Color(0xFF1D5EBE), // Button background color
+                            minimumSize: Size(double.infinity, 48),
+                            side: BorderSide(color: Colors.grey, width: 1), // Grey border color and width
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(8.0), // Rounded corners
+                            ),
+                            elevation: 0, // Remove elevation
+                          ),
+                        ),
+                        SizedBox(height: 16),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Expanded(
+                              child: Divider(
+                                color: Colors.grey, // Change divider color to grey
+                                thickness: 1, // Adjust the thickness as needed
+                              ),
+                            ),
+                            SizedBox(width: 16),
+                            Text(
+                              'or',
+                              style: TextStyle(fontSize: 16), // Adjust the text style as needed
+                            ),
+                            SizedBox(width: 16),
+                            Expanded(
+                              child: Divider(
+                                color: Colors.grey, // Change divider color to grey
+                                thickness: 1, // Adjust the thickness as needed
+                              ),
+                            ),
+                          ],
+                        ),
+                        SizedBox(height: 16),
+                        OutlinedButton.icon(
+                          onPressed: _signInWithGoogle,
+                          icon: Image.asset('assets/icons/google.png', height: 30),
+                          label: Text('Sign in using Google', style: TextStyle(color: Colors.black, fontFamily: 'GlacialIndifference-bold')),
+                          style: OutlinedButton.styleFrom(
+                            minimumSize: Size(double.infinity, 48),
+                            side: BorderSide(color: Colors.grey, width: 1), // Grey border color and width
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(8.0), // Rounded corners
+                            ),
+                            elevation: 0, // Remove elevation
+                          ),
+                        ),
+                        SizedBox(height: 32),
+                      ],
+                    ),
                   ),
                 ),
               ),
