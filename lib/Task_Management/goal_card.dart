@@ -1,6 +1,6 @@
 // lib/goal_card.dart
 import 'package:flutter/material.dart';
-import 'models.dart'; // Import the models
+import 'models.dart';
 
 class GoalCard extends StatelessWidget {
   final Goal goal;
@@ -46,25 +46,25 @@ class GoalCard extends StatelessWidget {
               ],
             ),
             SizedBox(height: 8),
-            Row(
-              children: [
-                Text(
-                  'Due on: ${goal.due_on}',
-                  style: TextStyle(
-                    fontSize: 14,
-                    fontFamily: 'GlacialIndifference',
-                  ),
-                ),
-                SizedBox(width: 16),
-                Text(
-                  'Priority: ${goal.priority}',
-                  style: TextStyle(
-                    fontSize: 14,
-                    fontFamily: 'GlacialIndifference',
-                  ),
-                ),
-              ],
-            ),
+            // Row(
+            //   children: [
+            //     Text(
+            //       'Due on: ${goal.due_on}',
+            //       style: TextStyle(
+            //         fontSize: 14,
+            //         fontFamily: 'GlacialIndifference',
+            //       ),
+            //     ),
+            //     SizedBox(width: 16),
+            //     Text(
+            //       'Priority: ${goal.priority}',
+            //       style: TextStyle(
+            //         fontSize: 14,
+            //         fontFamily: 'GlacialIndifference',
+            //       ),
+            //     ),
+            //   ],
+            // ),
           ],
         ),
       ),

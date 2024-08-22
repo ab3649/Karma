@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:karma/Task_Management/horizontal_card_list.dart';
-import 'package:karma/Task_Management/task_overlay.dart';
-import 'package:karma/Task_Management/vertical_card_list.dart';
 import 'package:karma/Task_Management/bottom_navigation_with_pointer.dart';
 import 'package:karma/Task_Management/goals_screen.dart';
 import 'package:karma/Task_Management/goal_overlay.dart';
-
+import 'package:karma/Task_Management/inbox_screen.dart'; // Import the InboxScreen
+import 'package:karma/Task_Management/task_overlay.dart';
 import 'package:karma/Task_Management/models.dart'; // Import your Task model
+import 'package:karma/Task_Management/today_screen.dart'; // Import the TodayScreen
+import 'package:karma/Task_Management/browse_screen.dart'; // Import the BrowseScreen
 
 class TaskScreen extends StatefulWidget {
   @override
@@ -26,7 +26,7 @@ class _TaskScreenState extends State<TaskScreen> {
     'Much much more',
   ];
 
-  final List<GlobalKey> _navBarItemKeys = List.generate(4, (index) => GlobalKey());
+  final List<GlobalKey> _navBarItemKeys = List.generate(4, (index) => GlobalKey()); // Adjusted to 4 items
 
   Offset _pointerPosition = Offset.zero;
 
@@ -61,15 +61,14 @@ class _TaskScreenState extends State<TaskScreen> {
         backgroundColor: Colors.transparent,
         builder: (context) => GoalOverlay(),
       );
-    } else {
-      // Show task overlay when on other screens
+    } else if (_selectedIndex == 0) {
+      // Show task overlay when on task screens
       showModalBottomSheet(
         context: context,
         isScrollControlled: true,
         backgroundColor: Colors.transparent,
-        builder: (context) => TaskOverlay(onTaskCreated: (Task ) {  },),
+        builder: (context) => TaskOverlay(onTaskCreated: (Task) {},),
       ).then((_) {
-        // Handle task addition (update UI or state if needed)
         setState(() {
           // Example: refresh the task list
         });
@@ -86,45 +85,22 @@ class _TaskScreenState extends State<TaskScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
-        child: _selectedIndex == 2
+        child: _selectedIndex == 0
+            ? InboxScreen(
+          cardTitles: _cardTitles,
+          selectedCardIndex: _selectedCardIndex,
+          onCardTap: (index) {
+            setState(() {
+              _selectedCardIndex = index;
+            });
+          },
+          onEditPressed: _showOverlay,
+        )
+            : _selectedIndex == 1
+            ? TodayScreen()  // Show the Today screen if the 'Today' button is selected
+            : _selectedIndex == 2
             ? GoalsScreen()  // Show the Goals screen if the 'Goals' button is selected
-            : Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Hi Liam!',
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.normal, fontFamily: 'GlacialIndifference'),
-              ),
-              SizedBox(height: 8),
-              Text(
-                'Below is a summary of all actions that need attention today!',
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.normal, fontFamily: 'GlacialIndifference'),
-              ),
-              SizedBox(height: 16),
-              ScrollableCardList(
-                selectedCardIndex: _selectedCardIndex,
-                cardTitles: _cardTitles,
-                onCardTap: (index) {
-                  setState(() {
-                    _selectedCardIndex = index;
-                  });
-                },
-              ),
-              SizedBox(height: 16),
-              Expanded(
-                child: Container(
-                  color: Colors.white,
-                  child: VerticalCardList(
-                    selectedCardIndex: _selectedCardIndex,
-                    onEditPressed: _showOverlay,
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
+            : BrowseScreen(), // Show the Browse screen if the 'Browse' button is selected
       ),
       bottomNavigationBar: BottomNavigationWithPointer(
         selectedIndex: _selectedIndex,
