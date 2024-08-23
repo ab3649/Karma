@@ -59,7 +59,7 @@ class BottomNavigationWithPointer extends StatelessWidget {
                   label: 'Goals',
                 ),
                 BottomNavigationBarItem(
-                  icon: Image.asset('assets/icons/Sort.png', key: navBarItemKeys[3]),
+                  icon: Image.asset('assets/icons/Browse.png', key: navBarItemKeys[3]),
                   label: 'Browse',
                 ),
               ],

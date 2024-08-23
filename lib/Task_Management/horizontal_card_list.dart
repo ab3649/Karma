@@ -49,9 +49,9 @@ class ScrollableCardList extends StatelessWidget {
             ),
           ),
           SizedBox(width: 4),
-          _buildIconButton(context, 'assets/icons/Vector1.jpg'),
+          _buildIconButton(context, 'assets/icons/Filter.png'),
           SizedBox(width: 8),
-          _buildIconButton(context, 'assets/icons/Sort1.jpg'),
+          _buildIconButton(context, 'assets/icons/Sort.png'),
         ],
       ),
     );

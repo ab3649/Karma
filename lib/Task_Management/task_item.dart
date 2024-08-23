@@ -56,7 +56,8 @@ class _TaskItemState extends State<TaskItem> {
                           border: Border.all(color: Colors.grey),
                         ),
                       ),
-                      SizedBox(width: 8), // Space between circle and text
+                      // IconButton(icon: Image.asset('assets/icons/Ellipse 1.png',), onPressed: () {  },),
+                        SizedBox(width: 8), // Space between circle and text
                       Text(
                         widget.title,
                         style: TextStyle(

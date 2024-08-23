@@ -21,14 +21,14 @@ class _OtpPageState extends State<OtpPage> {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          icon: Image.asset('assets/icons/Vector (Stroke).png', color: Colors.black),
+          icon: Image.asset('assets/icons/Back.png', color: Colors.black),
           onPressed: () {
             Navigator.pop(context); // Implement back navigation
           },
         ),
         actions: [
           IconButton(
-            icon: Image.asset('assets/icons/Vector.png', color: Colors.black),
+            icon: Image.asset('assets/icons/Settings.png', color: Colors.black),
             onPressed: () {
               // Implement your settings navigation here
             },

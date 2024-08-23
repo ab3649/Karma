@@ -11,22 +11,33 @@ class GoalTaskCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(left: 16.0),
-      child: Card(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+      child: Container(
+        decoration: BoxDecoration(
+          border: Border.all(color: Colors.grey[300]!, width: 1), // Outline border
+          borderRadius: BorderRadius.circular(10),
+          color: Colors.white, // Background color
+        ),
         margin: EdgeInsets.symmetric(vertical: 4),
-        elevation: 2,
         child: ListTile(
-          leading: Radio(
-            value: goalTask.isCompleted,
-            groupValue: false,
-            onChanged: (value) {
-              // Handle task completion logic here
-            },
+          // leading: Radio(
+          //   value: goalTask.isCompleted,
+          //   groupValue: false,
+          //   onChanged: (value) {
+          //     // Handle task completion logic here
+          //   },
+          // ),
+          leading: Container(
+            width: 15,
+            height: 15,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              border: Border.all(color: Colors.grey),
+            ),
           ),
           title: Text(
             goalTask.description_gt,
             style: TextStyle(
-              fontSize: 16,
+              fontSize: 15,
               fontFamily: 'GlacialIndifference',
               color: Colors.black,
             ),

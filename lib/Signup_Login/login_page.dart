@@ -85,7 +85,7 @@ class _LogInPageState extends State<LogInPage> {
         title: Text('karma'),
         actions: [
           IconButton(
-            icon: Image.asset('assets/icons/Vector.png', color: Colors.black),
+            icon: Image.asset('assets/icons/Settings.png', color: Colors.black),
             onPressed: () {
               // Implement your settings navigation here
             },

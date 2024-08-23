@@ -13,14 +13,14 @@ class _GoalInputPageState extends State<GoalInputPage> {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          icon: Image.asset('assets/icons/Vector (Stroke).png', color: Colors.black),
+          icon: Image.asset('assets/icons/Back.png', color: Colors.black),
           onPressed: () {
             // Implement back navigation here
           },
         ),
         actions: [
           IconButton(
-            icon: Image.asset('assets/icons/Vector.png', color: Colors.black),
+            icon: Image.asset('assets/icons/Settings.png', color: Colors.black),
             onPressed: () {
               // Implement your settings navigation here
             },
