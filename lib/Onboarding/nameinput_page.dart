@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:karma/Onboarding/goalinput_page.dart';
 
 class NameInputPage extends StatefulWidget {
   @override
@@ -87,6 +88,10 @@ class _NameInputPageState extends State<NameInputPage> {
                   OutlinedButton(
                     onPressed: () {
                       // Implement proceed logic here
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => GoalInputPage()),
+                      );
                     },
                     child: Text('Proceed', style: TextStyle(color: Colors.white, fontFamily: 'GlacialIndifference-bold')), // Proceed text color
                     style: OutlinedButton.styleFrom(

@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:karma/Onboarding/signup_page.dart';
+import 'package:karma/Signup_Login/forgot_page.dart';
+import 'package:karma/Task_Management/taskScreen.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
@@ -203,14 +206,26 @@ class _LogInPageState extends State<LogInPage> {
                               ],
                             ),
                             TextButton(
-                              onPressed: _forgotPassword,
+                              // onPressed: _forgotPassword,
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(builder: (context) => ForgotPage()),
+                                );
+                              },
                               child: Text('Forgot Password?', style: TextStyle(color: Colors.grey, fontFamily: 'GlacialIndifference')),
                             ),
                           ],
                         ),
                         SizedBox(height: 4),
                         OutlinedButton(
-                          onPressed: _signInWithEmailAndPassword,
+                          // onPressed: _signInWithEmailAndPassword,
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => TaskScreen()),
+                            );
+                          },
                           child: Text('Sign In', style: TextStyle(color: Colors.white, fontFamily: 'GlacialIndifference-bold')), // Sign-in text color
                           style: OutlinedButton.styleFrom(
                             backgroundColor: Color(0xFF1D5EBE), // Button background color
@@ -278,6 +293,10 @@ class _LogInPageState extends State<LogInPage> {
                     TextButton(
                       onPressed: () {
                         // Navigate to sign-up page
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => SignUpPage()),
+                          );
                       },
                       child: Text('Create One here.', style: TextStyle(color: Colors.black, fontFamily: 'GlacialIndifference-bold'),),
                     ),

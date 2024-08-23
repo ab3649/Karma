@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:karma/Onboarding/taskinput_page.dart';
 
 class GoalInputPage extends StatefulWidget {
   @override
@@ -96,6 +97,10 @@ class _GoalInputPageState extends State<GoalInputPage> {
                         OutlinedButton(
                           onPressed: () {
                             // Implement proceed logic here
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => TaskInputPage()),
+                            );
                           },
                           child: Text('Let\'s get cracking!', style: TextStyle(color: Colors.white, fontFamily: 'GlacialIndifference-bold')), // Proceed text color
                           style: OutlinedButton.styleFrom(
@@ -122,6 +127,10 @@ class _GoalInputPageState extends State<GoalInputPage> {
                   TextButton(
                     onPressed: () {
                         // Navigate to sign-in page
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => TaskInputPage()),
+                      );
                     },
                     child: Text('Skip this for now', style: TextStyle(color: Colors.black, fontFamily: 'GlacialIndifference')),
                   ),

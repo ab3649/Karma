@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:karma/Task_Management/taskScreen.dart';
 
 class TaskInputPage extends StatefulWidget {
   @override
@@ -96,6 +97,10 @@ class _TaskInputPageState extends State<TaskInputPage> {
                         OutlinedButton(
                           onPressed: () {
                             // Implement proceed logic here
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => TaskScreen()),
+                            );
                           },
                           child: Text('Looks good!', style: TextStyle(color: Colors.white, fontFamily: 'GlacialIndifference-bold')), // Proceed text color
                           style: OutlinedButton.styleFrom(
@@ -122,6 +127,10 @@ class _TaskInputPageState extends State<TaskInputPage> {
                 TextButton(
                   onPressed: () {
                     // Navigate to sign-in page
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => TaskScreen()),
+                    );
                   },
                   child: Text('Skip this for now', style: TextStyle(color: Colors.black, fontFamily: 'GlacialIndifference')),
                 ),

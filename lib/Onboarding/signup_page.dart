@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:karma/Onboarding/nameinput_page.dart';
+import 'package:karma/Signup_Login/login_page.dart';
 
 class SignUpPage extends StatefulWidget {
   @override
@@ -155,6 +157,10 @@ class _SignUpPageState extends State<SignUpPage> {
                         OutlinedButton(
                           onPressed: () {
                             // Implement account creation logic here
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => NameInputPage()),
+                            );
                           },
                           child: Text('Create Account', style: TextStyle(color: Colors.white, fontFamily: 'GlacialIndifference-bold')), // Sign-in text color
                           style: OutlinedButton.styleFrom(
@@ -184,7 +190,10 @@ class _SignUpPageState extends State<SignUpPage> {
                     Text("Already have an account?", style: TextStyle(fontFamily: 'GlacialIndifference')),
                     TextButton(
                       onPressed: () {
-                        // Navigate to sign-in page
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => LogInPage()),
+                        );
                       },
                       child: Text('Sign In', style: TextStyle(color: Colors.black, fontFamily: 'GlacialIndifference-bold')),
                     ),
